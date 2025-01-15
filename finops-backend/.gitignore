@@ -1,0 +1,7 @@
+
+# Ignore sensitive configuration files
+configo/*.json
+
+# Ignore environment variables
+.env
+
