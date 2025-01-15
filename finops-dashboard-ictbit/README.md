@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+FinOps Cost Tracking System
+Project Overview
+The primary goal of this project is to streamline cloud financial management (FinOps) by collecting and analyzing billing data from various cloud providers such as AWS and GCP. This system helps track cloud expenses, identify cost trends, and manage budgets effectively.
+In this project, simulated billing data was fetched specifically from Google Cloud Platform (GCP). The data was manually inserted into BigQuery for demonstration purposes, showcasing how cloud billing data can be processed, stored, and visualized.
+________________________________________
+Technologies Used
+Backend
+•	Node.js – Server-side runtime environment
+•	Express.js – Web framework for building RESTful APIs
+•	PostgreSQL – Relational database for storing billing data
+•	Google BigQuery – Data warehouse for cloud billing data storage
+•	dotenv – Environment variable management
+•	pg – PostgreSQL client for Node.js
+Frontend
+•	React.js – Frontend library for building UI components
+•	Axios – HTTP client for API communication
+•	Material UI (MUI) – UI component library for styling
+________________________________________
+Project Structure
+finops-project/
+├── backend/
+│   ├── config/
+│   │   └── README_KEYS.md         # Instructions for setting up sensitive keys
+│   ├── .env.example               # Example environment variables
+│   ├── db.js                     # PostgreSQL database connection
+│   ├── index.js                  # Express server setup and API routes
+│   ├── insertToDbFromBigQuery.js # Fetches data from BigQuery and inserts into PostgreSQL
+│   ├── gcpMockBilling.js         # Fetches mock billing data from BigQuery
+│   ├── package.json              # Backend dependencies
+├── frontend/
+│   ├── src/
+│   │   ├── App.js               # Main React component
+│   │   ├── CostTable.jsx        # Component for displaying cost data
+│   │   ├── index.js             # Renders React app
+│   ├── package.json             # Frontend dependencies
+├── README.md                    # Project documentation
+________________________________________
+Data Flow
+1.	Data Insertion: Mock billing data is manually uploaded to BigQuery.
+2.	Backend Processing: 
+o	Node.js server connects to BigQuery.
+o	Data is fetched and stored in PostgreSQL.
+3.	Frontend Display: 
+o	React app fetches billing data through REST API.
+o	Data is presented in a dynamic table with sorting and budget tracking features.
+________________________________________
+Getting Started
+1. Backend Setup
+cd backend
+npm install
+npm run dev
+2. Frontend Setup
+cd frontend
+npm install
+npm start
+________________________________________
+Setting Up Sensitive Configuration Files
+1.	Download the provided ZIP file containing the sensitive configuration files.
+2.	Extract the contents into the backend/config/ folder.
+Folder Structure:
+backend/
+└── config/
+    ├── service-account-1.json
+    └── service-account-2.json
+3.	Copy the .env.example file to .env and fill in the necessary values:
+cp backend/.env.example backend/.env
+4.	Run the backend server:
+cd backend
+npm run dev
+________________________________________
+Features
+•	Cloud Billing Data Integration – Fetches billing data from BigQuery.
+•	PostgreSQL Storage – Secure storage and management of billing data.
+•	Dynamic Cost Table – Sort and filter cost data by provider, service, project, and more.
+•	Budget Tracking – Input budget and receive alerts when exceeded.
+________________________________________
+Future Improvements
+•	Integration with AWS billing data.
+•	Real-time data synchronization.
+•	Advanced data visualization (charts, graphs).
+•	User authentication and access control.
+________________________________________
+Author
+Matan Maman
+Junior Integration Engineer | Full Stack Developer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
